@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { ErrorMessage } from 'formik';
 
 function FormikForm() {
     const formik = useFormik({
@@ -32,7 +31,6 @@ function FormikForm() {
                     type="text" 
                     {...formik.getFieldProps('username')}
                 />
-                <ErrorMessage name="username" component="div" />
             </div>
             <div>
                 <label>Email:</label>
@@ -40,7 +38,6 @@ function FormikForm() {
                     type="email" 
                     {...formik.getFieldProps('email')}
                 />
-                <ErrorMessage name="email" component="div" />
             </div>
             <div>
                 <label>Password:</label>
@@ -48,7 +45,6 @@ function FormikForm() {
                     type="password" 
                     {...formik.getFieldProps('password')}
                 />
-                <ErrorMessage name="password" component="div" />
             </div>
             <button type="submit">Register</button>
         </form>
