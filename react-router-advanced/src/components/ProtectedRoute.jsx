@@ -1,9 +1,10 @@
 // src/components/ProtectedRoute.jsx
 import React from 'react';
 import { Route, Navigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 function ProtectedRoute({ element, ...rest }) {
-    const isAuthenticated = false; // Replace with real authentication logic
+    const { isAuthenticated } = useAuth();
 
     return (
         <Route
