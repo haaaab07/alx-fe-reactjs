@@ -69,5 +69,5 @@ function FormikForm() {
         </Formik>
     );
 }
-
+["string().required"]
 export default FormikForm;
