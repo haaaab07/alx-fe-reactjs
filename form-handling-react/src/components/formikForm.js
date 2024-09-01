@@ -2,14 +2,15 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+// Validation schema using Yup
 const validationSchema = Yup.object({
     username: Yup.string()
-        .required('Username is required'),
+        .required('Username is required'), // Field is required
     email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
+        .email('Invalid email address') // Email format validation
+        .required('Email is required'), // Field is required
     password: Yup.string()
-        .required('Password is required')
+        .required('Password is required') // Field is required
 });
 
 function FormikForm() {
