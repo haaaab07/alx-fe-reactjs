@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (username && email && password) {
-            console.log('Form submitted', { username, email, password });
+        const isValid = Object.values(formData).every(field => field.trim() !== '');
+        if (isValid) {
+            console.log('Form submitted', formData);
         } else {
             console.log('Please fill out all fields');
         }
@@ -20,24 +31,27 @@ function RegistrationForm() {
                 <label>Username:</label>
                 <input 
                     type="text" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
+                    name="username"
+                    value={formData.username} 
+                    onChange={handleChange} 
                 />
             </div>
             <div>
                 <label>Email:</label>
                 <input 
                     type="email" 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
+                    name="email"
+                    value={formData.email} 
+                    onChange={handleChange} 
                 />
             </div>
             <div>
                 <label>Password:</label>
                 <input 
                     type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
+                    name="password"
+                    value={formData.password} 
+                    onChange={handleChange} 
                 />
             </div>
             <button type="submit">Register</button>
