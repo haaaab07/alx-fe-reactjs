@@ -22,26 +22,32 @@ function RecipeDetail() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded mb-4" />
-      <p className="text-gray-700 text-lg mb-4">{recipe.summary}</p>
+      <div className="bg-white shadow-lg rounded-lg p-6 mb-6"> {/* Add shadow and other styling to the card */}
+        <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
+        <img 
+          src={recipe.image} 
+          alt={recipe.title} 
+          className="w-full h-64 object-cover rounded shadow-md mb-4" 
+        /> {/* Add shadow to the image */}
+        <p className="text-gray-700 text-lg mb-4">{recipe.summary}</p>
 
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Ingredients</h2>
-        <ul className="list-disc list-inside">
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
-      </div>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold mb-2">Ingredients</h2>
+          <ul className="list-disc list-inside">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-2">Instructions</h2>
-        <ol className="list-decimal list-inside">
-          {recipe.instructions.map((step, index) => (
-            <li key={index} className="mb-2">{step}</li>
-          ))}
-        </ol>
+        <div>
+          <h2 className="text-2xl font-semibold mb-2">Instructions</h2>
+          <ol className="list-decimal list-inside">
+            {recipe.instructions.map((step, index) => (
+              <li key={index} className="mb-2">{step}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );
