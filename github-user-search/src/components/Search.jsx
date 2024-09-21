@@ -29,7 +29,7 @@ function Search() {
       })
       .catch(() => {
         setLoading(false);
-        setError("Looks like we can't find the user");
+        setError("Looks like we cant find the user");
       });
   };
 
