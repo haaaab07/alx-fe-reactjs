@@ -24,9 +24,9 @@ function Search() {
         setLoading(false);
         setUserData(data);
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false);
-        setError('Looks like we can’t find the user.');
+        setError("Looks like we can't find the user");
       });
   };
 
