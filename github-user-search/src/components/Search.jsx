@@ -18,24 +18,23 @@ function Search() {
   };
 
   // Handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    
+
     // Construct the search query
     const query = `${username}${location ? `+location:${location}` : ''}${minRepos ? `+repos:>${minRepos}` : ''}`;
 
-    // Fetch user data from GitHub API
-    fetchUserData(query)
-      .then((data) => {
-        setLoading(false);
-        setUserData(data.items); // Assuming GitHub returns an array in `items`
-      })
-      .catch(() => {
-        setLoading(false);
-        setError("Looks like we can't find any users");
-      });
+    try {
+      // Fetch user data from GitHub API
+      const data = await fetchUserData(query);
+      setUserData(data.items); // Assuming GitHub returns an array in `items`
+    } catch (err) {
+      setError("Looks like we can't find any users");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
