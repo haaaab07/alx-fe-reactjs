@@ -7,18 +7,21 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Handle input change for search form
   const handleInputChange = (e) => {
     setUsername(e.target.value);
   };
 
+  // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!username) return;
-    
+
     setLoading(true);
     setError('');
     setUserData(null);
 
+    // Fetch user data from GitHub API
     fetchUserData(username)
       .then((data) => {
         setLoading(false);
@@ -42,7 +45,7 @@ function Search() {
         <button type="submit">Search</button>
       </form>
 
-      {/* Conditional Rendering */}
+      {/* Display status: loading, error, or user data */}
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {userData && (
