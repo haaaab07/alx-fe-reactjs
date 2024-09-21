@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SearchBar from './components/SearchBar';
+import UserList from './components/UserList';
+import { searchGitHubUsers } from './services/githubService';
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  const handleSearch = (username) => {
+    searchGitHubUsers(username).then((data) => {
+      setUsers(data.items); // `data.items` holds the search results
+    }).catch((error) => {
+      console.error('Error fetching users:', error);
+    });
+  };
+
   return (
     <div>
       <h1>GitHub User Search</h1>
-      {/* Add routing or main component structure here */}
+      <SearchBar onSearch={handleSearch} />
+      <UserList users={users} />
     </div>
   );
 }
